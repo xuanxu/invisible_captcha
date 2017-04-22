@@ -18,8 +18,13 @@ describe InvisibleCaptcha::ViewHelpers, type: :helper do
       "id=\"#{input_id}\" name=\"#{input_name}\" type=\"text\""
     end
 
+    div_attributtes = []
+    {id: html_id, class: html_class}.each_pair do |key, value|
+      div_attributtes << %(#{key}="#{value}")
+    end
+
     %{
-      <div id="#{html_id}" class="#{html_class}">
+      <div #{div_attributtes.join(' ')}>
         <label for="#{input_id}">#{InvisibleCaptcha.sentence_for_humans}</label>
         <input #{input_attributes} />
       </div>
