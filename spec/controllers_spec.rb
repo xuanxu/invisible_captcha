@@ -14,7 +14,7 @@ describe InvisibleCaptcha::ControllerExt, type: :controller do
       request.env['HTTP_REFERER'] = 'http://test.host/topics'
       post :create, topic: { title: 'foo' }
 
-      expect(response).to redirect_to :back
+      expect(response).to redirect_to 'http://test.host/topics'
       expect(flash[:error]).to eq(InvisibleCaptcha.timestamp_error_message)
     end
   end
@@ -39,7 +39,7 @@ describe InvisibleCaptcha::ControllerExt, type: :controller do
       request.env['HTTP_REFERER'] = 'http://test.host/topics'
       post :create, topic: { title: 'foo' }
 
-      expect(response).to redirect_to :back
+      expect(response).to redirect_to 'http://test.host/topics'
       expect(flash[:error]).to eq(InvisibleCaptcha.timestamp_error_message)
     end
 

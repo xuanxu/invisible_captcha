@@ -26,7 +26,7 @@ module InvisibleCaptcha
       if action = options[:on_timestamp_spam]
         send(action)
       else
-        redirect_to :back, flash: { error: InvisibleCaptcha.timestamp_error_message }
+        redirect_back(fallback_location: root_path, flash: { error: InvisibleCaptcha.timestamp_error_message })
       end
     end
 
